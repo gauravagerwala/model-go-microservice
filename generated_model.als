@@ -12,14 +12,12 @@ assert hasCircularDependency{
 
 check hasCircularDependency
 
-one sig  serviceC extends Service{ }
-one sig  serviceD extends Service{ }
-one sig  serviceA extends Service{ }
-one sig  serviceB extends Service{ }
+one sig serviceB extends Service{ }
+one sig serviceA extends Service{ }
+one sig serviceC extends Service{ }
 fact { 
-	Application.services =  serviceC +  serviceD +  serviceA +  serviceB 
-	no  serviceC.dependsOn 
-	 serviceD.dependsOn =     serviceA +     serviceB
-	 serviceA.dependsOn =     serviceC +     serviceB
-	 serviceB.dependsOn =     serviceC
+	Application.services = serviceB + serviceA + serviceC 
+	serviceB.dependsOn = serviceC
+	serviceA.dependsOn = serviceB + serviceC
+	no serviceC.dependsOn 
 }

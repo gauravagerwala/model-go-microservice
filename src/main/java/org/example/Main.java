@@ -24,11 +24,6 @@ public class Main {
             e.printStackTrace();
         }
 
-//        dependencies = new HashMap<>();
-//        dependencies.put("serviceA", new String[]{"serviceB", "serviceC"});
-//        dependencies.put("serviceB", new String[]{"serviceC"});
-//        dependencies.put("serviceC", new String[]{});
-
         ModelGenerator generator = new ModelGenerator();
         try {
             generator.generateModel(dependencies);
